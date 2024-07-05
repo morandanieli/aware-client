@@ -272,11 +272,14 @@ public class AwareSyncAdapter extends AbstractThreadedSyncAdapter {
             return 0;
         }
 
-        double availableRam = memInfo.totalMem / 1048576000.0;
-        if (availableRam <= 1.0) return 500;
-        if (availableRam <= 2.0) return 1500;
-        if (availableRam <= 4.0) return 5000;
-        return 10000;
+//        double availableRam = memInfo.totalMem / 1048576000.0;
+//        if (availableRam <= 1.0) return 500;
+//        if (availableRam <= 2.0) return 1500;
+//        if (availableRam <= 4.0) return 5000;
+//        return 10000;
+	// limit http POST to batch size of 50 since otherwise 
+	// request fails on the server side over HTTP POST maximum capacity exceed exception 
+        return 50;
     }
 
 
